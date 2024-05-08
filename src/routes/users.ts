@@ -28,4 +28,14 @@ export async function users(app: FastifyInstance) {
     const users = await knex("users").select();
     return { users };
   });
+
+  app.get("/:id", async (req, res) => {
+    const getUserParamsSchema = z.object({
+      id: z.string().uuid(),
+    });
+    const { id } = getUserParamsSchema.parse(req.params);
+
+    const users = await knex("users").where({ id }).first();
+    return { users };
+  });
 }

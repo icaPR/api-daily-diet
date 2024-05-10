@@ -9,5 +9,13 @@ declare module "knex/types/tables" {
       password: string;
       confirm_password: string;
     };
+    meals: {
+      id: string;
+      user_id: string;
+      name: string;
+      description: string;
+      be_on_the_diet: boolean;
+      created_at?: string;
+    };
   }
 }
